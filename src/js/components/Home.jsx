@@ -4,9 +4,7 @@ import SearchForm from '../components/SearchForm'
 class Home extends React.Component {
   render() {
     return (
-      <div>
-        <SearchForm />
-      </div>
+      <SearchForm />
     )
   }
 }

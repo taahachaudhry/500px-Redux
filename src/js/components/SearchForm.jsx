@@ -1,6 +1,7 @@
-import React from 'react'
-import Input from './Input'
-import Button from './Button'
+import React       from 'react'
+import { Link }        from 'react-router'
+import Input       from './Input'
+import Button      from './Button'
 
 class SearchForm extends React.Component {
   render() {
@@ -12,7 +13,9 @@ class SearchForm extends React.Component {
         <Input
           placeholder="Locations"
         />
-       <Button>Search</Button>
+        <Link to='/results'>
+          <Button>Search</Button>
+        </Link>
       </div>
     );
   }
