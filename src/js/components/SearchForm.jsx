@@ -6,17 +6,19 @@ import Button      from './Button'
 class SearchForm extends React.Component {
   render() {
     return (
-      <div>
+      <form>
         <Input
-          placeholder="Tags"
+          placeholder="Enter a tag to search:"
+          className="search"
         />
         <Input
-          placeholder="Locations"
+          placeholder="Enter a location to search:"
+          className="search"
         />
         <Link to='/results'>
           <Button>Search</Button>
         </Link>
-      </div>
+      </form>
     );
   }
 }

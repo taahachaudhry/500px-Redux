@@ -3,7 +3,8 @@ import React from 'react'
 class Button extends React.Component {
   render() {
     return (
-      <button>
+      <button
+        className={this.props.className}>
         {this.props.children}
       </button>
     );
@@ -12,7 +13,8 @@ class Button extends React.Component {
 
 Button.displayName = 'Button'
 Button.propTypes = {
-  children: React.PropTypes.node
+  children: React.PropTypes.node,
+  className: React.PropTypes.string
 }
 
 export default Button

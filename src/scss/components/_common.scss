@@ -1,0 +1,17 @@
+button {
+  width: 100%;
+  padding: 0;
+  overflow: visible;
+  font: inherit;
+  font-size: 1.167rem;
+  line-height: 40px;
+  color: $white;
+  background: $blue;
+  border: 1px solid $blue;
+  border-radius: 3px;
+
+  &.inverse {
+    color: $blue;
+    background: $white;
+  }
+}

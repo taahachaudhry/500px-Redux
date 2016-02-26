@@ -5,6 +5,7 @@ class Input extends React.Component {
     return (
       <input
           type="text"
+          className={this.props.className}
           placeholder={this.props.placeholder}
           autoFocus="true"
       />
@@ -14,6 +15,7 @@ class Input extends React.Component {
 
 Input.displayName = 'Input'
 Input.propTypes = {
+  className: React.PropTypes.string,
   placeholder: React.PropTypes.string
 }
 
