@@ -1,6 +1,7 @@
 .search-container {
   position: relative;
   height: 100%;
+  margin: 0 10px;
 }
 
 .search-box {
@@ -8,7 +9,8 @@
   top: 40%;
   right: 0;
   left: 0;
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
   padding: 50px;
   margin: 0 auto;
   background-color: $white;
@@ -23,5 +25,43 @@
     margin-bottom: 15px;
     border: 1px solid $blue;
     border-radius: 3px;
+  }
+
+  .text-divider {
+    position: relative;
+    margin: 10px 0;
+    overflow: hidden;
+    text-align: center;
+
+    span {
+      color: $gray;
+
+      &:before, &:after {
+        position: absolute;
+        top: 50%;
+        width: 50%;
+        height: 1px;
+        background-color: $light-gray;
+        content: '\a0';
+        transform: translateY(-50%);
+      }
+
+      &:before {
+        margin-left: -55%;
+        text-align: left;
+      }
+
+      &:after {
+        margin-left: 5%;
+        text-align: right;
+      }
+    }
+  }
+}
+
+@media(max-width: 479px) {
+  .search-box {
+    padding: 0;
+    background-color: inherit;
   }
 }
