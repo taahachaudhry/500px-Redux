@@ -1,0 +1,4 @@
+export const IDLE = 'IDLE';
+export const SEARCH_FETCHING = 'SEARCH_FETCHING';
+export const SEARCH_FETCHING_NEXT = 'SEARCH_FETCHING_NEXT';
+export const SEARCH_FETCHED = 'SEARCH_FETCHED';
