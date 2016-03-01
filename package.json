@@ -1,6 +1,6 @@
 {
-  "name": "instagram-redux",
-  "description": "Using Redux to build an app displaying data provided by the Instagram API",
+  "name": "500px-redux",
+  "description": "Using Redux to build an app displaying data provided by the 500px API",
   "author": "Taaha Chaudhry",
   "devDependencies": {
     "babel": "^6.5.1",

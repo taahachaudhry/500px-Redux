@@ -36,7 +36,8 @@
     span {
       color: $gray;
 
-      &:before, &:after {
+      &:before,
+      &:after {
         position: absolute;
         top: 50%;
         width: 50%;
