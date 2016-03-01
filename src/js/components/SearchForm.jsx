@@ -11,18 +11,8 @@ class SearchForm extends React.Component {
           placeholder="Enter a tag to search:"
           className="search"
         />
-        <Input
-          placeholder="Enter a location to search:"
-          className="search"
-        />
         <Link to='/results'>
           <Button>Search</Button>
-        </Link>
-        <div className="text-divider">
-          <span>OR</span>
-        </div>
-        <Link to='/results'>
-          <Button className='inverse'>Log in with Instagram</Button>
         </Link>
       </form>
     );
