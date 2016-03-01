@@ -1,7 +1,8 @@
 import { handleActions } from 'redux-actions'
 import Immutable from 'immutable'
 
-import * as types from '../constants/ActionTypes'
+// Disable eslint no-unused-vars here because these are actually used
+import { SEARCH_FETCHED, SEARCH_FETCHING } from '../constants/ActionTypes' // eslint-disable-line no-unused-vars
 
 const initialState = {
   fetching: false,
@@ -9,7 +10,7 @@ const initialState = {
 }
 
 export default handleActions({
-  types.SEARCH_FETCHED: {
+  SEARCH_FETCHED: {
     next(state, action) {
       return state.merge({
         fetching: false,
@@ -23,7 +24,7 @@ export default handleActions({
       })
     }
   },
-  types.SEARCH_FETCHING: (state) => {
+  SEARCH_FETCHING: (state) => {
     return state.set('fetching', true)
   }
 }, initialState)
