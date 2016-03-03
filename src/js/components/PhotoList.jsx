@@ -8,9 +8,10 @@ class PhotoList extends React.Component {
 
   searchNextPage(e) {
     const keyword = this.props.photos.keyword;
+    const tag = this.props.photos.tag;
     const page = this.props.photos.page+=1;
     if (e.type === 'click') {
-      this.props.actions.fetchPhotos(keyword, page);
+      this.props.actions.fetchPhotos(keyword, tag, page);
     }
   }
 

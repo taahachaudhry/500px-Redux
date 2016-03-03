@@ -10,10 +10,11 @@ class SearchForm extends React.Component {
   }
 
   searchPhotos(e) {
-    const keyword = ReactDom.findDOMNode(this.refs.searchInput).value.trim();
+    const keyword = ReactDom.findDOMNode(this.refs.keyword).value.trim();
+    const tag = ReactDom.findDOMNode(this.refs.tag).value.trim();
     const page = 1;
     if (e.which === 13 || e.type === 'click') {
-      this.props.actions.fetchPhotos(keyword, page);
+      this.props.actions.fetchPhotos(keyword, tag, page);
     }
   }
 
@@ -23,7 +24,12 @@ class SearchForm extends React.Component {
         <Input
           placeholder="Enter a keyword to search:"
           className="search"
-          ref='searchInput'
+          ref="keyword"
+        />
+        <Input
+          placeholder="Enter a tag to search:"
+          className="search"
+          ref="tag"
         />
         <Link to='/results'>
           <Button

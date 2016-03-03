@@ -14,8 +14,9 @@ export default handleActions({
       return {
         ...state,
         photos: action.payload.data.photos,
-        page: action.payload.data.current_page,
         keyword: action.payload.keyword,
+        tag: action.payload.tag,
+        page: action.payload.data.current_page,
         fetching: false
       };
     },
