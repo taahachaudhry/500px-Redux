@@ -4,7 +4,8 @@ class Button extends React.Component {
   render() {
     return (
       <button
-        className={this.props.className}>
+        className={this.props.className}
+        onClick={this.props.onClick}>
         {this.props.children}
       </button>
     );
@@ -14,7 +15,8 @@ class Button extends React.Component {
 Button.displayName = 'Button'
 Button.propTypes = {
   children: React.PropTypes.node,
-  className: React.PropTypes.string
+  className: React.PropTypes.string,
+  onClick: React.PropTypes.func
 }
 
 export default Button

@@ -10,7 +10,7 @@ class SearchForm extends React.Component {
 
   searchPhotos(e) {
     const keyword = e.target.value.trim();
-    if (e.which === 13) {
+    if (e.which === 13 || e.type === 'click') {
       this.props.actions.fetchPhotos(keyword);
     }
   }
@@ -24,7 +24,9 @@ class SearchForm extends React.Component {
           onKeyDown={this.searchPhotos.bind(this)}
         />
         <Link to='/results'>
-          <Button>
+          <Button
+            onClick={this.searchPhotos.bind(this)}
+          >
             Search
           </Button>
         </Link>
