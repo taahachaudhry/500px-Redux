@@ -1,8 +1,17 @@
-import React           from 'react'
+import React from 'react'
+import Button from './Button'
 
 class PhotoList extends React.Component {
   constructor(props, context) {
     super(props, context)
+  }
+
+  searchNextPage(e) {
+    const keyword = this.props.photos.keyword;
+    const page = this.props.photos.page+=1;
+    if (e.type === 'click') {
+      this.props.actions.fetchPhotos(keyword, page);
+    }
   }
 
   render() {
@@ -17,6 +26,10 @@ class PhotoList extends React.Component {
             );
           })
           }
+          <Button
+            onClick={this.searchNextPage.bind(this)}>
+            Next
+          </Button>
       </div>
     );
   }
@@ -24,6 +37,7 @@ class PhotoList extends React.Component {
 
 PhotoList.displayName = 'PhotoList'
 PhotoList.propTypes = {
+  actions: React.PropTypes.object,
   photos: React.PropTypes.object
 }
 

@@ -1,4 +1,5 @@
 import React           from 'react'
+import ReactDom from 'react-dom';
 import { Link }        from 'react-router'
 import Input           from './Input'
 import Button          from './Button'
@@ -9,19 +10,20 @@ class SearchForm extends React.Component {
   }
 
   searchPhotos(e) {
-    const keyword = e.target.value.trim();
+    const keyword = ReactDom.findDOMNode(this.refs.searchInput).value.trim();
+    const page = 1;
     if (e.which === 13 || e.type === 'click') {
-      this.props.actions.fetchPhotos(keyword);
+      this.props.actions.fetchPhotos(keyword, page);
     }
   }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.searchPhotos.bind(this)}>
         <Input
           placeholder="Enter a keyword to search:"
           className="search"
-          onKeyDown={this.searchPhotos.bind(this)}
+          ref='searchInput'
         />
         <Link to='/results'>
           <Button
