@@ -4,17 +4,17 @@ import Immutable from 'immutable'
 // Disable eslint no-unused-vars here because these are actually used
 import { SEARCH_FETCHED, SEARCH_FETCHING } from '../constants/ActionTypes' // eslint-disable-line no-unused-vars
 
-const initialState = {
+const initialState = Immutable.Map({
   fetching: false,
   photos: Immutable.List()
-}
+})
 
 export default handleActions({
   SEARCH_FETCHED: {
     next(state, action) {
       return state.merge({
         fetching: false,
-        photos: Immutable.fromJS(action.payload.data)
+        photos: Immutable.fromJS(action.payload.photos)
       })
     },
     throw(state) {

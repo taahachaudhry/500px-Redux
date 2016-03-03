@@ -1,1 +1,1 @@
-exports.photos = require('./photos');
+export { default as photos } from './photos';

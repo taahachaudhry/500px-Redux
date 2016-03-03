@@ -6,12 +6,12 @@ import * as SearchActions from '../actions'
 
 class Search extends React.Component {
   render() {
-    const { actions } = this.props
+    const { actions, photos } = this.props
 
     return (
       <div className="search-container">
         <div className="search-box">
-          <SearchForm actions={actions}/>
+          <SearchForm actions={actions} photos={photos}/>
         </div>
       </div>
     )
@@ -20,7 +20,8 @@ class Search extends React.Component {
 
 Search.displayName = 'Search'
 Search.propTypes = {
-  actions: React.PropTypes.object
+  actions: React.PropTypes.object,
+  photos: React.PropTypes.object
 }
 
 export default Search
