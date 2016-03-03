@@ -9,7 +9,7 @@ class PhotoList extends React.Component {
     return (
       <div>
         {
-          this.props.photos.toJSON().photos.map((photo) => {
+          this.props.photos['photos'].map((photo) => {
             return (
               <div>
                 <img src={photo.image_url} />

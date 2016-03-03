@@ -1,27 +1,28 @@
 import { handleActions } from 'redux-actions'
-import Immutable from 'immutable'
 
 // Disable eslint no-unused-vars here because these are actually used
 import { SEARCH_FETCHED, SEARCH_FETCHING } from '../constants/ActionTypes' // eslint-disable-line no-unused-vars
 
-const initialState = Immutable.Map({
+const initialState = {
   fetching: false,
-  photos: Immutable.List()
-})
+  photos: []
+}
 
 export default handleActions({
   SEARCH_FETCHED: {
     next(state, action) {
-      return state.merge({
-        fetching: false,
-        photos: Immutable.fromJS(action.payload.photos)
-      })
+      return {
+        ...state,
+        photos: action.payload.photos,
+        fetching: false
+      };
     },
     throw(state) {
-      return state.merge({
+      return {
+        ...state,
         fetching: false,
-        photos: Immutable.List()
-      })
+        photos: []
+      }
     }
   },
   SEARCH_FETCHING: (state) => {
