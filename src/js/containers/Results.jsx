@@ -2,15 +2,17 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PhotoList from '../components/PhotoList'
+import Map from '../components/Map'
 import * as SearchActions from '../actions'
 
 class Results extends React.Component {
   render() {
-    const { photos, actions} = this.props
+    const { photos, actions } = this.props
 
     return (
       <div>
         <PhotoList actions={actions} photos={photos} />
+        <Map />
       </div>
     )
   }

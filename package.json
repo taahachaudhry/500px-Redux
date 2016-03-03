@@ -33,6 +33,7 @@
     "classnames": "^2.2.3",
     "history": "^1.17.0",
     "immutable": "^3.7.6",
+    "mapbox.js": "^2.3.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",

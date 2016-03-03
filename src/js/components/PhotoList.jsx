@@ -15,14 +15,18 @@ class PhotoList extends React.Component {
     }
   }
 
+  showGeo() {
+    //console.log(this.props.photos['photos'][e.target.id].latitude)
+  }
+
   render() {
     return (
       <div>
         {
-          this.props.photos['photos'].map((photo) => {
+          this.props.photos['photos'].map((photo, index) => {
             return (
-              <div>
-                <img src={photo.image_url} />
+              <div key={index}>
+                <img src={photo.image_url} onClick={this.showGeo.bind(this)} id={index}/>
               </div>
             );
           })
