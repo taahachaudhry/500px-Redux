@@ -1,0 +1,41 @@
+.photo-list {
+  width: 50%;
+  padding: 0 0.5%;
+
+  .photo-item {
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 31.3%;
+    margin: 2% 1% 0;
+    vertical-align: top;
+    cursor: pointer;
+
+    &:nth-child(3n+1) {
+      clear: left;
+    }
+
+    .image-wrapper {
+      position: relative;
+      padding-top: 100%;
+      overflow: hidden;
+      background: $gray;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  .pagination-buttons {
+    width: 100%;
+    text-align: center;
+
+    button {
+      width: 50px;
+      margin: 20px 5px;
+    }
+  }
+}
