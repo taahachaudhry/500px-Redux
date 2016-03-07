@@ -44,14 +44,14 @@ class PhotoList extends React.Component {
             <Button
               onClick={this.searchPreviousPage.bind(this)}
               className={classnames({
-                  disabled: this.props.photos.page === 1
+                  hidden: this.props.photos.page === 1 || this.props.photos['photos'].length < 21
               })}>
               &lt;
             </Button>
             <Button
               onClick={this.searchNextPage.bind(this)}
               className={classnames({
-                  disabled: this.props.photos['photos'].length < 21
+                  hidden: this.props.photos['photos'].length < 21
               })}>
               &gt;
             </Button>
