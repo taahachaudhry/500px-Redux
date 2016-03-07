@@ -9,13 +9,13 @@ class Map extends React.Component {
         {
           accessToken:'pk.eyJ1IjoidGFhaGFjb2RlcyIsImEiOiJjaWxjdjIycHozb3VudHVseDl0bnZtZHZqIn0.VAO0WZamTQqpZ8y5DH1Iaw'
         }
-      ).setView([-74.50, 40], 9);
+      ).setView([38.8833, 77.0167], 2);
     }, 0)
   }
 
   render() {
     return (
-      <div ref='map' id='map'></div>
+      <div ref='map' id='map' className="map"></div>
     )
   }
 }
