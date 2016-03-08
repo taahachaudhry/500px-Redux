@@ -18,7 +18,7 @@ class Results extends React.Component {
 
     return (
       <div>
-        <Header />
+        <Header actions={actions} photos={photos} />
         <div className="search-results">
           <PhotoList actions={actions} photos={photos} />
           <Map />

@@ -11,6 +11,9 @@ var routes = (
 
     <Route path="results" component={Results}/>
     <Route path="popular" component={Results}/>
+    <Route path="upcoming" component={Results}/>
+    <Route path="editors" component={Results}/>
+    <Route path="fresh" component={Results}/>
   </Route>
 );
 

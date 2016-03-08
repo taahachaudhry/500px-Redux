@@ -31,7 +31,7 @@ class SearchForm extends React.Component {
           className="search"
           ref="tag"
         />
-        <Link to='/results'>
+        <Link to="/results">
           <Button
             onClick={this.searchPhotos.bind(this)}
             className="search-button"
@@ -45,8 +45,5 @@ class SearchForm extends React.Component {
 }
 
 SearchForm.displayName = 'SearchForm'
-SearchForm.propTypes = {
-  actions: React.PropTypes.object
-}
 
 export default SearchForm

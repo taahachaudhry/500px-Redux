@@ -29,7 +29,7 @@ export const fetchActivePhoto = createAction(types.ACTIVE_PHOTO, (photo, id) => 
 })
 
 export const fetchFeaturedPhotos = createAction(types.FEATURED_FETCHED, (feature, page) => {
-  return axios.get(urlBase + '?feature=' + feature + '&page=' + page + '&rpp=21&image_size=600&sort=highest_rating&consumer_key=qORoTrkfEDEBtysr6psIO2sKU6aHyvjYj0Aq4dRu')
+  return axios.get(urlBase + '?feature=' + feature + '&page=' + page + '&rpp=21&image_size=600&consumer_key=qORoTrkfEDEBtysr6psIO2sKU6aHyvjYj0Aq4dRu')
   .then((res) => {
     if(res) {
       return {

@@ -7,6 +7,14 @@ class Header extends React.Component {
     super(props);
   }
 
+  fetchFeaturedPhotos(feature) {
+    const page = 1;
+    return () => {
+      this.props.actions.fetchActivePhoto(null, null);
+      this.props.actions.fetchFeaturedPhotos(feature, page);
+    }
+  }
+
   render() {
     return (
       <header className="header">
@@ -16,22 +24,30 @@ class Header extends React.Component {
           </Link>
           <ul className="discover-links">
             <li>
-              <Link to="/popular">
+              <Link
+                to="/popular"
+                onClick={this.fetchFeaturedPhotos('popular')}>
                 Popular
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link
+                to="/upcoming"
+                onClick={this.fetchFeaturedPhotos('upcoming')}>
                 Upcoming
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link
+                to="/editors"
+                onClick={this.fetchFeaturedPhotos('editors')}>
                 Editors
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link
+                to="/fresh"
+                onClick={this.fetchFeaturedPhotos('fresh_today')}>
                 Fresh
               </Link>
             </li>
@@ -43,5 +59,8 @@ class Header extends React.Component {
 }
 
 Header.displayName = 'Header'
+Header.propTypes = {
+  actions: React.PropTypes.object
+}
 
 export default Header
