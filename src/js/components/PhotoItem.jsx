@@ -8,8 +8,6 @@ class PhotoItem extends React.Component {
 
   showGeo() {
     // console.log(this.props.photo.longitude)
-    var active = !this.state.isActive;
-    this.setState({isActive: active})
   }
 
   render() {

@@ -7,10 +7,6 @@ class PhotoList extends React.Component {
   constructor(props, context) {
     super(props, context)
 
-    this.state = {
-      activePhoto: false
-    }
-
     this.searchPreviousPage = this.searchPreviousPage.bind(this)
     this.setActivePhoto = this.setActivePhoto.bind(this)
   }
@@ -19,6 +15,7 @@ class PhotoList extends React.Component {
     const keyword = this.props.photos.keyword;
     const tag = this.props.photos.tag;
     const page = this.props.photos.page-=1;
+    this.props.actions.fetchActivePhoto(null, null);
     this.props.actions.fetchPhotos(keyword, tag, page);
   }
 
@@ -26,6 +23,7 @@ class PhotoList extends React.Component {
     const keyword = this.props.photos.keyword;
     const tag = this.props.photos.tag;
     const page = this.props.photos.page+=1;
+    this.props.actions.fetchActivePhoto(null, null);
     this.props.actions.fetchPhotos(keyword, tag, page);
   }
 
@@ -42,7 +40,7 @@ class PhotoList extends React.Component {
           {
             this.props.photos['photos'].map((photo, index) => {
               return (
-                <PhotoItem photo={photo} index={index} key={index} handleClick={this.setActivePhoto} isActive={index===this.props.photos.id}/>
+                <PhotoItem photo={photo} index={index} key={index} handleClick={this.setActivePhoto} isActive={index===this.props.photos.activePhotoId}/>
               );
             })
           }

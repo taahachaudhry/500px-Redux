@@ -11,8 +11,8 @@ export const fetchPhotos = createAction(types.SEARCH_FETCHED, (keyword, tag, pag
     if(res) {
       return {
         data: res.data,
-        keyword: keyword,
-        tag: tag
+        keyword,
+        tag
       }
     }
   });
@@ -22,7 +22,7 @@ export const startFetching = createAction(types.SEARCH_FETCHING)
 
 export const fetchActivePhoto = createAction(types.ACTIVE_PHOTO, (photo, id) => {
   return {
-    photo: photo,
-    id: id
+    photo,
+    id
   }
 })

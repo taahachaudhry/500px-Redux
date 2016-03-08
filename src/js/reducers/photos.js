@@ -5,7 +5,9 @@ import { SEARCH_FETCHED, SEARCH_FETCHING } from '../constants/ActionTypes' // es
 
 const initialState = {
   fetching: false,
-  photos: []
+  photos: [],
+  activePhoto: null,
+  activePhotoId: null
 }
 
 export default handleActions({
@@ -35,7 +37,7 @@ export default handleActions({
     return {
       ...state,
       activePhoto: action.payload.photo,
-      id: action.payload.id
+      activePhotoId: action.payload.id
     };
   }
 }, initialState)
