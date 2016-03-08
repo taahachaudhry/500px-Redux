@@ -3,14 +3,54 @@
   background-color: $blue;
 
   .header-content {
+    position: relative;
+    height: 100%;
     max-width: 1300px;
     margin: 0 auto;
+    text-align: center;
   }
 
   .back {
+    position: absolute;
+    left: 0;
+    width: 44px;
+    height: 100%;
+    margin-left: 1%;
+    vertical-align: middle;
+
     svg {
-      margin-left: 1%;
       transform: translateY(25%);
+    }
+  }
+
+  .discover-links {
+    display: inline-block;
+    height: 100%;
+    margin: 0 auto;
+    line-height: 70px;
+
+    li {
+      display: inline;
+    }
+
+    a {
+      display: inline-block;
+      height: 66px;
+      padding: 0 20px;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      color: $white;
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 4px solid transparent;
+
+      &:hover {
+        border-bottom: 4px solid $white;
+      }
+
+      &.current {
+        border-bottom: 4px solid $white;
+      }
     }
   }
 }

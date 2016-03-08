@@ -14,12 +14,26 @@ class Header extends React.Component {
           <Link className="back" to="/">
             <BackIcon/>
           </Link>
-          <ul>
+          <ul className="discover-links">
             <li>
+              <Link to="/popular">
+                Popular
+              </Link>
             </li>
             <li>
+              <Link to="/">
+                Upcoming
+              </Link>
             </li>
             <li>
+              <Link to="/">
+                Editors
+              </Link>
+            </li>
+            <li>
+              <Link to="/">
+                Fresh
+              </Link>
             </li>
           </ul>
         </div>
