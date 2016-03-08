@@ -2,6 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PhotoList from '../components/PhotoList'
+import ActivePhoto from '../components/ActivePhoto'
 import Map from '../components/Map'
 import * as SearchActions from '../actions'
 
@@ -9,10 +10,16 @@ class Results extends React.Component {
   render() {
     const { photos, actions } = this.props
 
+    var activePhotoElement;
+    if (this.props.photos.activePhoto) {
+      activePhotoElement = <ActivePhoto photo={this.props.photos.activePhoto} />
+    }
+
     return (
-      <div>
+      <div className="search-results">
         <PhotoList actions={actions} photos={photos} />
         <Map />
+        {activePhotoElement}
       </div>
     )
   }

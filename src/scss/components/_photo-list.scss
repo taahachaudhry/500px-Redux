@@ -8,12 +8,17 @@
     display: inline-block;
     float: left;
     width: 31.3%;
-    margin: 2% 1% 0;
+    margin: calc(2% - 3px) calc(1% - 3px) 0;
     vertical-align: top;
     cursor: pointer;
+    border: 3px solid transparent;
 
     &:nth-child(3n+1) {
       clear: left;
+    }
+
+    &.active {
+      border: 3px solid $blue;
     }
 
     .image-wrapper {
@@ -38,5 +43,12 @@
       width: 50px;
       margin: 20px 5px;
     }
+  }
+}
+
+.active-image {
+  img {
+    width: 48%;
+    margin-top: 1%;
   }
 }

@@ -9,8 +9,8 @@ class Map extends React.Component {
         {
           accessToken:'pk.eyJ1IjoidGFhaGFjb2RlcyIsImEiOiJjaWxjdjIycHozb3VudHVseDl0bnZtZHZqIn0.VAO0WZamTQqpZ8y5DH1Iaw'
         }
-      ).setView([38.8833, 77.0167], 2);
-    }, 0)
+      ).setView([37.00, -120.00], 4);
+    }, 10)
   }
 
   render() {

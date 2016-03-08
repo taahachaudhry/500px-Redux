@@ -1,10 +1,18 @@
 import React from 'react'
 import Button from './Button'
+import PhotoItem from './PhotoItem'
 import classnames from 'classnames'
 
 class PhotoList extends React.Component {
   constructor(props, context) {
     super(props, context)
+
+    this.state = {
+      activePhoto: false
+    }
+
+    this.searchPreviousPage = this.searchPreviousPage.bind(this)
+    this.setActivePhoto = this.setActivePhoto.bind(this)
   }
 
   searchPreviousPage() {
@@ -21,8 +29,10 @@ class PhotoList extends React.Component {
     this.props.actions.fetchPhotos(keyword, tag, page);
   }
 
-  showGeo() {
-    //console.log(this.props.photos['photos'][e.target.id].latitude)
+  setActivePhoto(photo, id) {
+    return () => {
+      this.props.actions.fetchActivePhoto(photo, id)
+    }
   }
 
   render() {
@@ -32,26 +42,22 @@ class PhotoList extends React.Component {
           {
             this.props.photos['photos'].map((photo, index) => {
               return (
-                <li className="photo-item" key={index} id={index}>
-                  <div className="image-wrapper">
-                    <img src={photo.image_url} onClick={this.showGeo.bind(this)} id={index}/>
-                  </div>
-                </li>
+                <PhotoItem photo={photo} index={index} key={index} handleClick={this.setActivePhoto} isActive={index===this.props.photos.id}/>
               );
             })
           }
           <li className="pagination-buttons">
             <Button
-              onClick={this.searchPreviousPage.bind(this)}
+              onClick={this.searchPreviousPage}
               className={classnames({
-                  hidden: this.props.photos.page === 1 || this.props.photos['photos'].length < 21
+                'hidden': this.props.photos.page === 1 || this.props.photos['photos'].length < 21
               })}>
               &lt;
             </Button>
             <Button
               onClick={this.searchNextPage.bind(this)}
               className={classnames({
-                  hidden: this.props.photos['photos'].length < 21
+                  'hidden': this.props.photos['photos'].length < 21
               })}>
               &gt;
             </Button>

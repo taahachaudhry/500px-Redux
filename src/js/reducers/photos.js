@@ -30,5 +30,12 @@ export default handleActions({
   },
   SEARCH_FETCHING: (state) => {
     return state.set('fetching', true)
+  },
+  ACTIVE_PHOTO: (state, action) => {
+    return {
+      ...state,
+      activePhoto: action.payload.photo,
+      id: action.payload.id
+    };
   }
 }, initialState)
