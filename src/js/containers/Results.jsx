@@ -1,6 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import Header from '../components/Header'
 import PhotoList from '../components/PhotoList'
 import ActivePhoto from '../components/ActivePhoto'
 import Map from '../components/Map'
@@ -16,10 +17,13 @@ class Results extends React.Component {
     }
 
     return (
-      <div className="search-results">
-        <PhotoList actions={actions} photos={photos} />
-        <Map />
-        {activePhotoElement}
+      <div>
+        <Header />
+        <div className="search-results">
+          <PhotoList actions={actions} photos={photos} />
+          <Map />
+          {activePhotoElement}
+        </div>
       </div>
     )
   }

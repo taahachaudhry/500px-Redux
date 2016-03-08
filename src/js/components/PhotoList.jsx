@@ -1,7 +1,9 @@
 import React from 'react'
+import classnames from 'classnames'
 import Button from './Button'
 import PhotoItem from './PhotoItem'
-import classnames from 'classnames'
+import BackIcon from './BackIcon';
+import NextIcon from './NextIcon';
 
 class PhotoList extends React.Component {
   constructor(props, context) {
@@ -50,14 +52,14 @@ class PhotoList extends React.Component {
               className={classnames({
                 'hidden': this.props.photos.page === 1 || this.props.photos['photos'].length < 21
               })}>
-              &lt;
+              <BackIcon />
             </Button>
             <Button
               onClick={this.searchNextPage.bind(this)}
               className={classnames({
                   'hidden': this.props.photos['photos'].length < 21
               })}>
-              &gt;
+              <NextIcon />
             </Button>
           </li>
         </ul>

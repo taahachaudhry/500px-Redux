@@ -34,6 +34,7 @@ class SearchForm extends React.Component {
         <Link to='/results'>
           <Button
             onClick={this.searchPhotos.bind(this)}
+            className="search-button"
           >
             Search
           </Button>

@@ -6,10 +6,6 @@ class PhotoItem extends React.Component {
     super(props, context)
   }
 
-  showGeo() {
-    // console.log(this.props.photo.longitude)
-  }
-
   render() {
     return (
       <li

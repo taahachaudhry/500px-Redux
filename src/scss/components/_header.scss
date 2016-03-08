@@ -1,0 +1,16 @@
+.header {
+  height: 70px;
+  background-color: $blue;
+
+  .header-content {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .back {
+    svg {
+      margin-left: 1%;
+      transform: translateY(25%);
+    }
+  }
+}
