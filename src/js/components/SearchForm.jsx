@@ -14,6 +14,7 @@ class SearchForm extends React.Component {
     const tag = ReactDom.findDOMNode(this.refs.tag).value.trim();
     const page = 1;
     if (e.which === 13 || e.type === 'click') {
+      this.props.actions.fetchFeaturedPhotos(null, null);
       this.props.actions.fetchPhotos(keyword, tag, page);
     }
   }
@@ -45,5 +46,8 @@ class SearchForm extends React.Component {
 }
 
 SearchForm.displayName = 'SearchForm'
+SearchForm.propTypes = {
+  actions: React.PropTypes.object
+}
 
 export default SearchForm
