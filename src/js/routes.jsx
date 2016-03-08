@@ -10,6 +10,7 @@ var routes = (
     <IndexRoute component={Search}/>
 
     <Route path="results" component={Results}/>
+    <Route path="popular" component={Results}/>
   </Route>
 );
 

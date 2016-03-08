@@ -39,5 +39,23 @@ export default handleActions({
       activePhoto: action.payload.photo,
       activePhotoId: action.payload.id
     };
+  },
+  FEATURED_FETCHED: (state, action) => {
+    next(state, action) {
+      return {
+        ...state,
+        photos: action.payload.data.photos,
+        feature: action.payload.feature,
+        page: action.payload.data.current_page,
+        fetching: false
+      };
+    },
+    throw(state) {
+      return {
+        ...state,
+        fetching: false,
+        photos: []
+      }
+    }
   }
 }, initialState)
