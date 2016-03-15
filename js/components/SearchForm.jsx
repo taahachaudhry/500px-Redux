@@ -14,6 +14,7 @@ class SearchForm extends React.Component {
     const tag = ReactDom.findDOMNode(this.refs.tag).value.trim();
     const page = 1;
     if (e.which === 13 || e.type === 'click') {
+      this.props.actions.fetchFeaturedPhotos(null, null);
       this.props.actions.fetchPhotos(keyword, tag, page);
     }
   }
@@ -31,9 +32,10 @@ class SearchForm extends React.Component {
           className="search"
           ref="tag"
         />
-        <Link to='/results'>
+        <Link to="/results">
           <Button
             onClick={this.searchPhotos.bind(this)}
+            className="search-button"
           >
             Search
           </Button>
