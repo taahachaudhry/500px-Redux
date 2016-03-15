@@ -21,7 +21,6 @@ coverage
 
 
 # Build Directories
-dist
 src/css
 
 # Dependency directory

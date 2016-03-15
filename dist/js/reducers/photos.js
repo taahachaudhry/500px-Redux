@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 
 // Disable eslint no-unused-vars here because these are actually used
-import { SEARCH_FETCHED, SEARCH_FETCHING } from '../constants/ActionTypes' // eslint-disable-line no-unused-vars
+import { SEARCH_FETCHED, SEARCH_FETCHING, ACTIVE_PHOTO, FEATURED_FETCHED} from '../constants/ActionTypes' // eslint-disable-line no-unused-vars
 
 const initialState = {
   fetching: false,
@@ -39,5 +39,23 @@ export default handleActions({
       activePhoto: action.payload.photo,
       activePhotoId: action.payload.id
     };
+  },
+  FEATURED_FETCHED: {
+    next(state, action) {
+      return {
+        ...state,
+        photos: action.payload.data.photos,
+        feature: action.payload.feature,
+        page: action.payload.data.current_page,
+        fetching: false
+      };
+    },
+    throw(state) {
+      return {
+        ...state,
+        fetching: false,
+        photos: []
+      }
+    }
   }
 }, initialState)

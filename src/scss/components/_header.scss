@@ -44,10 +44,7 @@
       text-transform: uppercase;
       border-bottom: 4px solid transparent;
 
-      &:hover {
-        border-bottom: 4px solid $white;
-      }
-
+      &:hover,
       &.current {
         border-bottom: 4px solid $white;
       }

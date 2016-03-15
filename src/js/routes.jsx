@@ -8,12 +8,15 @@ import Results                  from './containers/Results';
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Search}/>
+    <Route path="search" component={Search}/>
 
     <Route path="results" component={Results}/>
     <Route path="popular" component={Results}/>
     <Route path="upcoming" component={Results}/>
     <Route path="editors" component={Results}/>
-    <Route path="fresh" component={Results}/>
+    <Route path="fresh_today" component={Results}/>
+
+    <Route path="*" component={Search}/>
   </Route>
 );
 

@@ -41807,6 +41807,7 @@ var fetchActivePhoto = exports.fetchActivePhoto = (0, _reduxActions.createAction
 });
 
 var fetchFeaturedPhotos = exports.fetchFeaturedPhotos = (0, _reduxActions.createAction)(types.FEATURED_FETCHED, function (feature, page) {
+  console.log(feature, page);
   return _axios2.default.get(urlBase + '?feature=' + feature + '&page=' + page + '&rpp=21&image_size=600&consumer_key=qORoTrkfEDEBtysr6psIO2sKU6aHyvjYj0Aq4dRu').then(function (res) {
     if (res) {
       return {
@@ -42470,42 +42471,49 @@ var PhotoList = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PhotoList).call(this, props, context));
 
-    _this.searchPreviousPage = _this.searchPreviousPage.bind(_this);
     _this.setActivePhoto = _this.setActivePhoto.bind(_this);
     return _this;
   }
 
   _createClass(PhotoList, [{
-    key: 'searchPreviousPage',
-    value: function searchPreviousPage() {
+    key: 'paginatePage',
+    value: function paginatePage(paginate) {
+      var _this2 = this;
+
       var keyword = this.props.photos.keyword;
       var tag = this.props.photos.tag;
-      var page = this.props.photos.page -= 1;
-      this.props.actions.fetchActivePhoto(null, null);
-      this.props.actions.fetchPhotos(keyword, tag, page);
-    }
-  }, {
-    key: 'searchNextPage',
-    value: function searchNextPage() {
-      var keyword = this.props.photos.keyword;
-      var tag = this.props.photos.tag;
-      var page = this.props.photos.page += 1;
-      this.props.actions.fetchActivePhoto(null, null);
-      this.props.actions.fetchPhotos(keyword, tag, page);
+      var feature = this.props.photos.feature;
+      var page = this.props.photos.page;
+      return function () {
+        if (paginate === 'previous') {
+          page = _this2.props.photos.page -= 1;
+        }
+        if (paginate === 'next') {
+          page = _this2.props.photos.page += 1;
+        }
+
+        _this2.props.actions.fetchActivePhoto(null, null);
+
+        if (feature !== null) {
+          _this2.props.actions.fetchFeaturedPhotos(feature, page);
+        } else {
+          _this2.props.actions.fetchPhotos(keyword, tag, page);
+        }
+      };
     }
   }, {
     key: 'setActivePhoto',
     value: function setActivePhoto(photo, id) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function () {
-        _this2.props.actions.fetchActivePhoto(photo, id);
+        _this3.props.actions.fetchActivePhoto(photo, id);
       };
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       return _react2.default.createElement(
         'div',
@@ -42514,7 +42522,7 @@ var PhotoList = function (_React$Component) {
           'ul',
           { className: 'photo-list' },
           this.props.photos['photos'].map(function (photo, index) {
-            return _react2.default.createElement(_PhotoItem2.default, { photo: photo, index: index, key: index, handleClick: _this3.setActivePhoto, isActive: index === _this3.props.photos.activePhotoId });
+            return _react2.default.createElement(_PhotoItem2.default, { photo: photo, index: index, key: index, handleClick: _this4.setActivePhoto, isActive: index === _this4.props.photos.activePhotoId });
           }),
           _react2.default.createElement(
             'li',
@@ -42522,7 +42530,7 @@ var PhotoList = function (_React$Component) {
             _react2.default.createElement(
               _Button2.default,
               {
-                onClick: this.searchPreviousPage,
+                onClick: this.paginatePage('previous'),
                 className: (0, _classnames2.default)({
                   'hidden': this.props.photos.page === 1 || this.props.photos['photos'].length < 21
                 }) },
@@ -42531,7 +42539,7 @@ var PhotoList = function (_React$Component) {
             _react2.default.createElement(
               _Button2.default,
               {
-                onClick: this.searchNextPage.bind(this),
+                onClick: this.paginatePage('next'),
                 className: (0, _classnames2.default)({
                   'hidden': this.props.photos['photos'].length < 21
                 }) },
@@ -43038,11 +43046,13 @@ var routes = _react2.default.createElement(
   _reactRouter.Route,
   { path: '/', component: _App2.default },
   _react2.default.createElement(_reactRouter.IndexRoute, { component: _Search2.default }),
+  _react2.default.createElement(_reactRouter.Route, { path: 'search', component: _Search2.default }),
   _react2.default.createElement(_reactRouter.Route, { path: 'results', component: _Results2.default }),
   _react2.default.createElement(_reactRouter.Route, { path: 'popular', component: _Results2.default }),
   _react2.default.createElement(_reactRouter.Route, { path: 'upcoming', component: _Results2.default }),
   _react2.default.createElement(_reactRouter.Route, { path: 'editors', component: _Results2.default }),
-  _react2.default.createElement(_reactRouter.Route, { path: 'fresh', component: _Results2.default })
+  _react2.default.createElement(_reactRouter.Route, { path: 'fresh_today', component: _Results2.default }),
+  _react2.default.createElement(_reactRouter.Route, { path: '*', component: _Search2.default })
 );
 
 module.exports = routes;

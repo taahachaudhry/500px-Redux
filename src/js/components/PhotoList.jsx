@@ -9,24 +9,30 @@ class PhotoList extends React.Component {
   constructor(props, context) {
     super(props, context)
 
-    this.searchPreviousPage = this.searchPreviousPage.bind(this)
     this.setActivePhoto = this.setActivePhoto.bind(this)
   }
 
-  searchPreviousPage() {
+  paginatePage(paginate) {
     const keyword = this.props.photos.keyword;
     const tag = this.props.photos.tag;
-    const page = this.props.photos.page-=1;
-    this.props.actions.fetchActivePhoto(null, null);
-    this.props.actions.fetchPhotos(keyword, tag, page);
-  }
+    const feature = this.props.photos.feature;
+    var page = this.props.photos.page;
+    return () => {
+      if (paginate === 'previous') {
+        page = this.props.photos.page-=1;
+      }
+      if (paginate === 'next') {
+        page = this.props.photos.page+=1;
+      }
 
-  searchNextPage() {
-    const keyword = this.props.photos.keyword;
-    const tag = this.props.photos.tag;
-    const page = this.props.photos.page+=1;
-    this.props.actions.fetchActivePhoto(null, null);
-    this.props.actions.fetchPhotos(keyword, tag, page);
+      this.props.actions.fetchActivePhoto(null, null);
+
+      if (feature !== null) {
+        this.props.actions.fetchFeaturedPhotos(feature, page);
+      } else {
+        this.props.actions.fetchPhotos(keyword, tag, page);
+      }
+    }
   }
 
   setActivePhoto(photo, id) {
@@ -48,14 +54,14 @@ class PhotoList extends React.Component {
           }
           <li className="pagination-buttons">
             <Button
-              onClick={this.searchPreviousPage}
+              onClick={this.paginatePage('previous')}
               className={classnames({
                 'hidden': this.props.photos.page === 1 || this.props.photos['photos'].length < 21
               })}>
               <BackIcon />
             </Button>
             <Button
-              onClick={this.searchNextPage.bind(this)}
+              onClick={this.paginatePage('next')}
               className={classnames({
                   'hidden': this.props.photos['photos'].length < 21
               })}>
